@@ -7,7 +7,10 @@ import {
 } from "../actions/converterActions";
 
 const reducer = (
-  state = { transactions: [], transaction: { name: "", value: 0 } },
+  state = {
+    transactions: [],
+    transaction: { name: "", amount: 0, amountConversion: 0 }
+  },
   action
 ) => {
   switch (action.type) {
