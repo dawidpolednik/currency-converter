@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ChangeConverter from "./Components/ChangeConverter/ChangeConverter";
 import ConverterInfo from "./Components/ConverterInfo/ConverterInfo";
+import TransactionsList from "./Components/TransactionsList/TransactionList";
 import NewTransactionDialog from "./Components/NewTransactionDialog/NewTransactionDialog";
 import styles from "./App.module.scss";
 import { getTransactions } from "./actions/converterActions";
@@ -13,6 +14,7 @@ class App extends Component {
 
   componentDidUpdate = () => {
     this.props.getTransactions();
+    console.log("this.props.transactions :", this.props.transactions);
   };
 
   handleDialog = () => {
@@ -30,6 +32,9 @@ class App extends Component {
         <ChangeConverter />
         <ConverterInfo />
         <button onClick={this.handleDialog}>Dodaj transakcje</button>
+
+        <TransactionsList />
+
         <NewTransactionDialog
           open={openDialog}
           handleDialog={this.handleDialog}

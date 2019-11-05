@@ -14,16 +14,14 @@ import {
 } from "@material-ui/core";
 
 class NewTransactionDialog extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      openDialog: false,
-      transaction: {
-        name: "",
-        amount: ""
-      }
-    };
-  }
+  state = {
+    openDialog: false,
+    transaction: {
+      name: "",
+      amount: ""
+    }
+  };
+
   componentDidMount = () => {
     this.props.getRate();
   };
@@ -53,10 +51,12 @@ class NewTransactionDialog extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
     const { name, amount } = this.state.transaction;
-    const { rate } = this.props;
+    const { rate, handleDialog } = this.props;
     const conversionAmount = amount * rate;
     this.props.addTransaction({ name, amount, conversionAmount });
+    return this.props.handleDialog();
   };
 
   render() {
@@ -97,7 +97,7 @@ class NewTransactionDialog extends Component {
           />
 
           <DialogActions>
-            <Button onClick={this.props.handleSubmit} color="primary">
+            <Button onClick={this.handleSubmit} color="primary">
               Dodaj
             </Button>
             <Button onClick={this.props.handleDialog} color="primary">

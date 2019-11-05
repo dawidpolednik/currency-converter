@@ -9,7 +9,7 @@ import {
 const reducer = (
   state = {
     transactions: [],
-    transaction: { name: "", amount: 0, amountConversion: 0 }
+    transaction: { name: "", amount: 0, conversionAmount: 0 }
   },
   action
 ) => {
