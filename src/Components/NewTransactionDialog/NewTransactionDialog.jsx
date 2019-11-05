@@ -54,7 +54,7 @@ class NewTransactionDialog extends Component {
 
     const { name, amount } = this.state.transaction;
     const { rate, handleDialog } = this.props;
-    const conversionAmount = amount * rate;
+    const conversionAmount = (amount * rate).toFixed(2);
     this.props.addTransaction({ name, amount, conversionAmount });
     return this.props.handleDialog();
   };

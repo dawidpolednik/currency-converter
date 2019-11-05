@@ -12,7 +12,7 @@ class ChangeConverter extends Component {
     const { value } = this.state;
     const { setRate } = this.props;
     event.preventDefault();
-    console.log("value :", value);
+    console.log("value :", typeof value);
     value && value !== 0 && setRate(value);
     this.setState({ value: "" });
   };

@@ -22,7 +22,7 @@ const reducer = (
     case SET_RATE:
       return {
         ...state,
-        rate: action.payload.rate
+        rate: Number(action.payload.rate).toFixed(2)
       };
     case GET_TRANSACTIONS:
       return {
