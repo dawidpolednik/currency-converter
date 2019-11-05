@@ -1,4 +1,6 @@
 import {
+  GET_RATE,
+  SET_RATE,
   GET_TRANSACTIONS,
   ADD_TRANSACTION,
   DELETE_TRANSACTION
@@ -9,10 +11,20 @@ const reducer = (
   action
 ) => {
   switch (action.type) {
+    case GET_RATE:
+      return {
+        ...state,
+        rate: state.rate
+      };
+    case SET_RATE:
+      return {
+        ...state,
+        rate: action.payload.rate
+      };
     case GET_TRANSACTIONS:
       return {
         ...state,
-        transactions: action.payload.transactions
+        transactions: state.transactions
       };
     case ADD_TRANSACTION:
       return {
