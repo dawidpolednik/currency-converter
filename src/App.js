@@ -15,8 +15,8 @@ class App extends Component {
   };
 
   componentDidUpdate = () => {
-    this.props.getTransactions();
-    console.log("this.props.transactions :", this.props.transactions);
+    // this.props.getTransactions();
+    // console.log("this.props.transactions :", this.props.transactions);
   };
   handleDialogAlert = () =>
     this.setState(prevState => ({

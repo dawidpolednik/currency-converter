@@ -17,12 +17,12 @@ const reducer = (
     case GET_RATE:
       return {
         ...state,
-        rate: state.rate
+        rate: parseInt(state.rate).toFixed(2)
       };
     case SET_RATE:
       return {
         ...state,
-        rate: Number(action.payload.rate).toFixed(2)
+        rate: action.payload.rate
       };
     case GET_TRANSACTIONS:
       return {
@@ -35,11 +35,15 @@ const reducer = (
         transactions: [action.payload.transaction, ...state.transactions]
       };
     case DELETE_TRANSACTION:
+      console.log(
+        "action.payload.transactionToDelete :",
+        action.payload.transactionToDelete
+      );
       return {
         ...state,
-        transactions: state.transactions.filter(
-          transaction =>
-            transaction.Id !== action.payload.transactionToDelete.Id
+        transactions: state.transactions.splice(
+          action.payload.transactionToDelete,
+          1
         )
       };
 

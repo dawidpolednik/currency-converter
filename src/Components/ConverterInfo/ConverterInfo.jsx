@@ -12,12 +12,12 @@ class ConverterInfo extends Component {
 
   render() {
     const { rate } = this.props;
-    // console.log("this.props :", this.props);
-    const euroChar = `1 EUR`;
+    console.log(rate, typeof rate);
+    const euroChar = `1.00 EUR`;
     return (
       <div className={styles.infoContainer}>
         <p>
-          {euroChar} = <span>{!rate ? `x` : rate}</span> PLN
+          {euroChar} = <span>{!rate || isNaN(rate) ? `x` : rate}</span> PLN
         </p>
       </div>
     );

@@ -2,16 +2,24 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // import styles from "./Transaction.module.scss";
 import TransactionsItem from "./TransactionItem";
-import { getRate } from "../../actions/converterActions";
+import {
+  getRate,
+  deleteTransaction,
+  getTransactions
+} from "../../actions/converterActions";
 
 class TransactionsList extends Component {
   componentDidMount = () => {
     const { getRate } = this.props;
     getRate();
   };
-  componentDidUpdate(prevProps) {}
+  componentDidUpdate = () => {
+    this.props.getTransactions();
+    console.log("this.props.transactions :", this.props.transactions);
+  };
+
   render() {
-    const { transactions } = this.props;
+    const { transactions, deleteTransaction } = this.props;
     return (
       <ul>
         {transactions.map((transaction, index) => (
@@ -21,6 +29,7 @@ class TransactionsList extends Component {
               amount={transaction.amount}
               conversionAmount={transaction.conversionAmount}
               index={index}
+              toDelete={deleteTransaction}
             />
           </li>
         ))}
@@ -30,7 +39,10 @@ class TransactionsList extends Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    getRate: () => dispatch(getRate())
+    getRate: () => dispatch(getRate()),
+    deleteTransaction: transactionId =>
+      dispatch(deleteTransaction(transactionId)),
+    getTransactions: () => dispatch(getTransactions())
   };
 };
 const mapStateToProps = state => ({
