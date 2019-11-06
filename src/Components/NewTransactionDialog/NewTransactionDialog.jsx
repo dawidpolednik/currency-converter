@@ -33,6 +33,14 @@ class NewTransactionDialog extends Component {
       });
     }
   };
+  resetValues = () =>
+    this.setState({
+      transaction: {
+        ...this.state.transaction,
+        name: "",
+        amount: ""
+      }
+    });
 
   handleChangeName = e =>
     this.setState({
@@ -56,6 +64,7 @@ class NewTransactionDialog extends Component {
     const { rate, handleDialog } = this.props;
     const conversionAmount = (amount * rate).toFixed(2);
     this.props.addTransaction({ name, amount, conversionAmount });
+    this.resetValues();
     return this.props.handleDialog();
   };
 

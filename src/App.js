@@ -4,27 +4,36 @@ import ChangeConverter from "./Components/ChangeConverter/ChangeConverter";
 import ConverterInfo from "./Components/ConverterInfo/ConverterInfo";
 import TransactionsList from "./Components/TransactionsList/TransactionList";
 import NewTransactionDialog from "./Components/NewTransactionDialog/NewTransactionDialog";
+import DialogAlert from "./Components/DialogAlert/DialogAlert";
 import styles from "./App.module.scss";
 import { getTransactions } from "./actions/converterActions";
 
 class App extends Component {
   state = {
-    openDialog: false
+    openDialog: false,
+    isOpenAlert: false
   };
 
   componentDidUpdate = () => {
     this.props.getTransactions();
     console.log("this.props.transactions :", this.props.transactions);
   };
+  handleDialogAlert = () =>
+    this.setState(prevState => ({
+      isOpenAlert: !prevState.isOpenAlert
+    }));
 
   handleDialog = () => {
-    this.setState(prevState => ({
-      openDialog: !prevState.openDialog
-    }));
+    const { rate } = this.props;
+    rate && rate > 0
+      ? this.setState(prevState => ({
+          openDialog: !prevState.openDialog
+        }))
+      : this.handleDialogAlert();
   };
 
   render() {
-    const { openDialog } = this.state;
+    const { openDialog, isOpenAlert } = this.state;
     const { transaction } = this.props;
     console.log("transaction :", transaction);
     return (
@@ -38,6 +47,10 @@ class App extends Component {
         <NewTransactionDialog
           open={openDialog}
           handleDialog={this.handleDialog}
+        />
+        <DialogAlert
+          isOpenAlert={isOpenAlert}
+          handleDialogAlert={this.handleDialogAlert}
         />
       </div>
     );
