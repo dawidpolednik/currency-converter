@@ -3,6 +3,7 @@ import {
   SET_RATE,
   GET_TRANSACTIONS,
   ADD_TRANSACTION,
+  REFRESH_TRANSACTIONS,
   DELETE_TRANSACTION,
   SUM_TRANSACTIONS,
   GET_MAX_TRANSACTION
@@ -41,6 +42,15 @@ const reducer = (
       return {
         ...state,
         transactions: [action.payload.transaction, ...state.transactions]
+      };
+    case REFRESH_TRANSACTIONS:
+      return {
+        ...state,
+        transactions: state.transactions.map(({ name, amount }) => ({
+          name,
+          amount,
+          conversionAmount: parseInt(amount * action.payload.newRate).toFixed(2)
+        }))
       };
     case DELETE_TRANSACTION:
       return {

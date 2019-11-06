@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styles from "./ChangeConverter.module.scss";
-import { setRate } from "../../actions/converterActions";
+import { setRate, refreshTransactions } from "../../actions/converterActions";
 
 class ChangeConverter extends Component {
   state = {
@@ -12,10 +12,11 @@ class ChangeConverter extends Component {
 
   handleSubmit = event => {
     const { value } = this.state;
-    const { setRate } = this.props;
+    const { setRate, refreshTransactions } = this.props;
     event.preventDefault();
     console.log("value :", typeof value);
     value && value !== 0 && setRate(value);
+    value && value !== 0 && refreshTransactions(value);
     this.setState({ value: "" });
   };
 
@@ -39,7 +40,8 @@ class ChangeConverter extends Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    setRate: rate => dispatch(setRate(rate))
+    setRate: rate => dispatch(setRate(rate)),
+    refreshTransactions: newRate => dispatch(refreshTransactions(newRate))
   };
 };
 const mapStateToProps = state => ({

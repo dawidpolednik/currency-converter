@@ -1,5 +1,6 @@
 export const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 export const ADD_TRANSACTION = "ADD_TRANSACTION";
+export const REFRESH_TRANSACTIONS = "REFRESH_TRANSACTIONS";
 export const DELETE_TRANSACTION = "DELETE_TRANSACTION";
 export const SUM_TRANSACTIONS = "SUM_TRANSACTIONS";
 export const GET_MAX_TRANSACTION = "GET_MAX_TRANSACTION";
@@ -25,6 +26,13 @@ export const addTransaction = transaction => ({
   type: ADD_TRANSACTION,
   payload: {
     transaction
+  }
+});
+
+export const refreshTransactions = newRate => ({
+  type: REFRESH_TRANSACTIONS,
+  payload: {
+    newRate
   }
 });
 
