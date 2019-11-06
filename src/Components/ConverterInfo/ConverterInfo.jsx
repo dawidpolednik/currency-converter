@@ -5,7 +5,7 @@ import { getRate } from "../../actions/converterActions";
 
 class ConverterInfo extends Component {
   componentDidUpdate(prevProps) {
-    if (prevProps.rate !== this.props.rate && this.props.rate) {
+    if (this.props.rate) {
       this.props.getRate();
     }
   }

@@ -8,7 +8,16 @@ class ChangeConverter extends Component {
     value: ""
   };
 
-  handleChange = event => this.setState({ value: event.target.value });
+  handleChange = event => {
+    const { value } = this.state;
+    const { setRate, refreshTransactions } = this.props;
+    this.setState({ value: event.target.value }, () => {
+      value && value !== 0 && setRate(value);
+      value && value !== 0 && refreshTransactions(value);
+    });
+
+    console.log("value :", value);
+  };
 
   handleSubmit = event => {
     const { value } = this.state;
@@ -17,7 +26,7 @@ class ChangeConverter extends Component {
     console.log("value :", typeof value);
     value && value !== 0 && setRate(value);
     value && value !== 0 && refreshTransactions(value);
-    this.setState({ value: "" });
+    // this.setState({ ...this.state, value: "" });
   };
 
   render() {
@@ -27,13 +36,13 @@ class ChangeConverter extends Component {
         <input
           type="number"
           name="converterInput"
-          min="10"
+          min="0"
           max="100"
           className={styles.converterInput}
           value={this.state.value}
-          onChange={this.handleChange}
+          onChange={e => this.handleChange(e)}
         />
-        <button onClick={this.handleSubmit}>Przelicz</button>
+        {/* <button onClick={this.handleSubmit}>Przelicz</button> */}
       </div>
     );
   }
