@@ -17,7 +17,7 @@ const reducer = (
       conversionAmount: 0
     },
     sumOfTransactions: 0,
-    maxValueOfTransactions: ""
+    maxTransactionObject: {}
   },
   action
 ) => {
@@ -66,18 +66,22 @@ const reducer = (
               state.transactions[0].conversionAmount
       };
     case GET_MAX_TRANSACTION:
+      const findObjectMaxValue = () => {
+        return state.transactions && state.transactions.length > 1
+          ? state.transactions.reduce((prevTransaction, currentTransaction) =>
+              parseInt(prevTransaction.conversionAmount) >
+              parseInt(currentTransaction.conversionAmount)
+                ? prevTransaction
+                : currentTransaction
+            )
+          : state.transactions &&
+              state.transactions.length === 1 &&
+              state.transactions[0];
+      };
+
       return {
         ...state,
-        maxValueOfTransactions:
-          state.transactions &&
-          Math.max
-            .apply(
-              Math,
-              state.transactions.map(
-                transaction => transaction.conversionAmount
-              )
-            )
-            .toFixed(2)
+        maxTransactionObject: findObjectMaxValue()
       };
     default:
       return state;

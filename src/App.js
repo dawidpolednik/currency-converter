@@ -45,10 +45,9 @@ class App extends Component {
     const {
       transactions,
       sumOfTransactions,
-      maxValueOfTransactions
+      maxTransactionObject
     } = this.props;
-    console.log("transactions :", transactions);
-    console.log("sumOfTransactions :", sumOfTransactions);
+    console.log("maxTransactionObject :", maxTransactionObject);
     return (
       <div className={styles.container}>
         <ChangeConverter />
@@ -57,7 +56,8 @@ class App extends Component {
 
         <TransactionsList />
         <TransactionsSumInfo sumOfTransactions={sumOfTransactions} />
-        <TransactionMaxInfo maxValueOfTransactions={maxValueOfTransactions} />
+
+        <TransactionMaxInfo maxTransactionObject={maxTransactionObject} />
 
         <NewTransactionDialog
           open={openDialog}
@@ -83,7 +83,7 @@ const mapStateToProps = state => ({
   transactions: state.transactions,
   rate: state.rate,
   sumOfTransactions: state.sumOfTransactions,
-  maxValueOfTransactions: state.maxValueOfTransactions
+  maxTransactionObject: state.maxTransactionObject
 });
 export default connect(
   mapStateToProps,
