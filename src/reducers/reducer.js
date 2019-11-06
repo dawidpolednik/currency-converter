@@ -41,9 +41,12 @@ const reducer = (
       );
       return {
         ...state,
-        transactions: state.transactions.splice(
-          action.payload.transactionToDelete,
-          1
+        // transactions: state.transactions.splice(
+        //   action.payload.transactionToDelete,
+        //   1
+        // )
+        transactions: state.transactions.filter(
+          transaction => transaction !== action.payload.transactionToDelete
         )
       };
 

@@ -18,7 +18,7 @@ const TransactionItem = ({
           2
         )} Wartość transakcji(PLN): ${conversionAmount}`}
       </p>
-      <button onClick={() => toDelete(name)}>Usuń transakcje</button>
+      <button onClick={() => toDelete()}>Usuń transakcje</button>
     </>
   );
 };

@@ -29,7 +29,7 @@ class TransactionsList extends Component {
               amount={transaction.amount}
               conversionAmount={transaction.conversionAmount}
               index={index}
-              toDelete={deleteTransaction}
+              toDelete={() => deleteTransaction(transaction)}
             />
           </li>
         ))}
