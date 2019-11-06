@@ -8,9 +8,6 @@ const TransactionItem = ({
   toDelete,
   key
 }) => {
-  {
-    console.log("name :", name);
-  }
   return (
     <>
       <p>

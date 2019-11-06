@@ -3,13 +3,21 @@ import {
   SET_RATE,
   GET_TRANSACTIONS,
   ADD_TRANSACTION,
-  DELETE_TRANSACTION
+  DELETE_TRANSACTION,
+  SUM_TRANSACTIONS,
+  GET_MAX_TRANSACTION
 } from "../actions/converterActions";
 
 const reducer = (
   state = {
     transactions: [],
-    transaction: { name: "", amount: 0, conversionAmount: 0 }
+    transaction: {
+      name: "",
+      amount: 0,
+      conversionAmount: 0
+    },
+    sumOfTransactions: 0,
+    maxValueOfTransactions: ""
   },
   action
 ) => {
@@ -35,21 +43,42 @@ const reducer = (
         transactions: [action.payload.transaction, ...state.transactions]
       };
     case DELETE_TRANSACTION:
-      console.log(
-        "action.payload.transactionToDelete :",
-        action.payload.transactionToDelete
-      );
       return {
         ...state,
-        // transactions: state.transactions.splice(
-        //   action.payload.transactionToDelete,
-        //   1
-        // )
         transactions: state.transactions.filter(
           transaction => transaction !== action.payload.transactionToDelete
         )
       };
-
+    case SUM_TRANSACTIONS:
+      console.log("state.transactions :", state.transactions);
+      return {
+        ...state,
+        sumOfTransactions:
+          state.transactions && state.transactions.length > 1
+            ? state.transactions.reduce((prevTransaction, currentTransaction) =>
+                (
+                  parseInt(prevTransaction.conversionAmount) +
+                  parseInt(currentTransaction.conversionAmount)
+                ).toFixed(2)
+              )
+            : state.transactions &&
+              state.transactions.length === 1 &&
+              state.transactions[0].conversionAmount
+      };
+    case GET_MAX_TRANSACTION:
+      return {
+        ...state,
+        maxValueOfTransactions:
+          state.transactions &&
+          Math.max
+            .apply(
+              Math,
+              state.transactions.map(
+                transaction => transaction.conversionAmount
+              )
+            )
+            .toFixed(2)
+      };
     default:
       return state;
   }

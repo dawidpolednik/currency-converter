@@ -1,6 +1,8 @@
 export const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 export const ADD_TRANSACTION = "ADD_TRANSACTION";
 export const DELETE_TRANSACTION = "DELETE_TRANSACTION";
+export const SUM_TRANSACTIONS = "SUM_TRANSACTIONS";
+export const GET_MAX_TRANSACTION = "GET_MAX_TRANSACTION";
 export const SET_RATE = "SET_RATE";
 export const GET_RATE = "GET_RATE";
 
@@ -31,4 +33,12 @@ export const deleteTransaction = transaction => ({
   payload: {
     transactionToDelete: transaction
   }
+});
+
+export const sumTransactions = () => ({
+  type: SUM_TRANSACTIONS
+});
+
+export const getMaxTransaction = () => ({
+  type: GET_MAX_TRANSACTION
 });

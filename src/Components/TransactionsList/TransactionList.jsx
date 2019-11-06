@@ -15,7 +15,6 @@ class TransactionsList extends Component {
   };
   componentDidUpdate = () => {
     this.props.getTransactions();
-    console.log("this.props.transactions :", this.props.transactions);
   };
 
   render() {
@@ -23,7 +22,7 @@ class TransactionsList extends Component {
     return (
       <ul>
         {transactions.map((transaction, index) => (
-          <li key={transaction.name}>
+          <li key={index}>
             <TransactionsItem
               name={transaction.name}
               amount={transaction.amount}

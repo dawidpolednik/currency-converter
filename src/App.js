@@ -3,10 +3,16 @@ import { connect } from "react-redux";
 import ChangeConverter from "./Components/ChangeConverter/ChangeConverter";
 import ConverterInfo from "./Components/ConverterInfo/ConverterInfo";
 import TransactionsList from "./Components/TransactionsList/TransactionList";
+import TransactionsSumInfo from "./Components/TransactionsSumInfo/TransactionsSumInfo";
+import TransactionMaxInfo from "./Components/TransactionMaxInfo/TransactionMaxInfo";
 import NewTransactionDialog from "./Components/NewTransactionDialog/NewTransactionDialog";
 import DialogAlert from "./Components/DialogAlert/DialogAlert";
 import styles from "./App.module.scss";
-import { getTransactions } from "./actions/converterActions";
+import {
+  getTransactions,
+  sumTransactions,
+  getMaxTransaction
+} from "./actions/converterActions";
 
 class App extends Component {
   state = {
@@ -15,9 +21,11 @@ class App extends Component {
   };
 
   componentDidUpdate = () => {
-    // this.props.getTransactions();
-    // console.log("this.props.transactions :", this.props.transactions);
+    this.props.getTransactions();
+    this.props.sumTransactions();
+    this.props.getMaxTransaction();
   };
+
   handleDialogAlert = () =>
     this.setState(prevState => ({
       isOpenAlert: !prevState.isOpenAlert
@@ -34,8 +42,13 @@ class App extends Component {
 
   render() {
     const { openDialog, isOpenAlert } = this.state;
-    const { transaction } = this.props;
-    console.log("transaction :", transaction);
+    const {
+      transactions,
+      sumOfTransactions,
+      maxValueOfTransactions
+    } = this.props;
+    console.log("transactions :", transactions);
+    console.log("sumOfTransactions :", sumOfTransactions);
     return (
       <div className={styles.container}>
         <ChangeConverter />
@@ -43,6 +56,8 @@ class App extends Component {
         <button onClick={this.handleDialog}>Dodaj transakcje</button>
 
         <TransactionsList />
+        <TransactionsSumInfo sumOfTransactions={sumOfTransactions} />
+        <TransactionMaxInfo maxValueOfTransactions={maxValueOfTransactions} />
 
         <NewTransactionDialog
           open={openDialog}
@@ -58,13 +73,17 @@ class App extends Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    getTransactions: () => dispatch(getTransactions())
+    getTransactions: () => dispatch(getTransactions()),
+    sumTransactions: () => dispatch(sumTransactions()),
+    getMaxTransaction: () => dispatch(getMaxTransaction())
   };
 };
 const mapStateToProps = state => ({
   transaction: state.transaction,
   transactions: state.transactions,
-  rate: state.rate
+  rate: state.rate,
+  sumOfTransactions: state.sumOfTransactions,
+  maxValueOfTransactions: state.maxValueOfTransactions
 });
 export default connect(
   mapStateToProps,

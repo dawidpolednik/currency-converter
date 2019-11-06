@@ -12,7 +12,6 @@ class ConverterInfo extends Component {
 
   render() {
     const { rate } = this.props;
-    console.log(rate, typeof rate);
     const euroChar = `1.00 EUR`;
     return (
       <div className={styles.infoContainer}>
