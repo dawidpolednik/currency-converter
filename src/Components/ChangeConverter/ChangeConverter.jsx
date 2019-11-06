@@ -7,7 +7,9 @@ class ChangeConverter extends Component {
   state = {
     value: ""
   };
+
   handleChange = event => this.setState({ value: event.target.value });
+
   handleSubmit = event => {
     const { value } = this.state;
     const { setRate } = this.props;
@@ -16,6 +18,7 @@ class ChangeConverter extends Component {
     value && value !== 0 && setRate(value);
     this.setState({ value: "" });
   };
+
   render() {
     return (
       <div className={styles.inputContainer}>

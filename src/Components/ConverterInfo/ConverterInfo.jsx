@@ -17,7 +17,7 @@ class ConverterInfo extends Component {
     return (
       <div className={styles.infoContainer}>
         <p>
-          {euroChar} = <span>{rate}</span> PLN
+          {euroChar} = <span>{!rate ? `x` : rate}</span> PLN
         </p>
       </div>
     );
