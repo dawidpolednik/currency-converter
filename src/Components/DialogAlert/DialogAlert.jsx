@@ -3,7 +3,6 @@ import {
   withStyles,
   Button,
   Dialog,
-  DialogContent,
   DialogActions,
   DialogContentText,
   DialogTitle
@@ -17,7 +16,6 @@ const DialogAlert = ({
   title,
   content
 }) => {
-  // const { classes } = this.props;
   return (
     <Dialog
       open={isOpenAlert}
