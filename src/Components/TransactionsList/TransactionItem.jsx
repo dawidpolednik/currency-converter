@@ -11,7 +11,7 @@ const TransactionItem = ({
   return (
     <li key={index} className={styles.itemContainer}>
       <p className={styles.itemParagraph}>
-        {`Nazwa: ${name} | Kwota do przeliczenia: ${parseInt(amount).toFixed(
+        {`Nazwa: ${name} | Kwota do przeliczenia: ${parseFloat(amount).toFixed(
           2
         )} EUR | Wartość transakcji: ${conversionAmount} PLN`}
       </p>

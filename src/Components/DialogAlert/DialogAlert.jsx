@@ -7,8 +7,10 @@ import {
   DialogContentText,
   DialogTitle
 } from "@material-ui/core";
+// import style from "./DialogAlert.styles.js";
 
 const DialogAlert = ({ isOpenAlert, handleDialogAlert, title, content }) => {
+  // const { classes } = this.props;s
   return (
     <Dialog
       open={isOpenAlert}

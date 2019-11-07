@@ -12,7 +12,7 @@ const TransactionMaxInfo = ({ maxTransactionObject }) => {
           ? ` Nie wprowadziłeś jeszcze żadnych transakcji. `
           : `Nazwa transakcji: ${
               maxTransactionObject.name
-            } | Kwota do transakcji: ${parseInt(
+            } | Kwota do transakcji: ${parseFloat(
               maxTransactionObject.amount
             ).toFixed(2)} EUR | Wartość transakcji: ${
               maxTransactionObject.conversionAmount

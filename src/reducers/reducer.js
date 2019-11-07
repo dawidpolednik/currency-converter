@@ -26,7 +26,7 @@ const reducer = (
     case GET_RATE:
       return {
         ...state,
-        rate: parseInt(state.rate).toFixed(2)
+        rate: parseFloat(state.rate).toFixed(2)
       };
     case SET_RATE:
       return {
@@ -49,7 +49,9 @@ const reducer = (
         transactions: state.transactions.map(({ name, amount }) => ({
           name,
           amount,
-          conversionAmount: parseInt(amount * action.payload.newRate).toFixed(2)
+          conversionAmount: parseFloat(amount * action.payload.newRate).toFixed(
+            2
+          )
         }))
       };
     case DELETE_TRANSACTION:
@@ -67,8 +69,8 @@ const reducer = (
           state.transactions && state.transactions.length > 1
             ? state.transactions.reduce((prevTransaction, currentTransaction) =>
                 (
-                  parseInt(prevTransaction.conversionAmount) +
-                  parseInt(currentTransaction.conversionAmount)
+                  parseFloat(prevTransaction.conversionAmount) +
+                  parseFloat(currentTransaction.conversionAmount)
                 ).toFixed(2)
               )
             : state.transactions &&
@@ -79,8 +81,8 @@ const reducer = (
       const findObjectMaxValue = () => {
         return state.transactions && state.transactions.length > 1
           ? state.transactions.reduce((prevTransaction, currentTransaction) =>
-              parseInt(prevTransaction.conversionAmount) >
-              parseInt(currentTransaction.conversionAmount)
+              parseFloat(prevTransaction.conversionAmount) >
+              parseFloat(currentTransaction.conversionAmount)
                 ? prevTransaction
                 : currentTransaction
             )
