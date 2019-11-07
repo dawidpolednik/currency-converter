@@ -8,15 +8,6 @@ class ChangeConverter extends Component {
     value: ""
   };
 
-  handleChange = async event => {
-    const { value } = this.state;
-    const { setRate, refreshTransactions } = this.props;
-    await this.setState({ value: event.target.value });
-    value && value !== 0 && setRate(value);
-    value && value !== 0 && refreshTransactions(value);
-    console.log("value :", value);
-  };
-
   handleSubmit = () => {
     const { value } = this.state;
     const { setRate, refreshTransactions } = this.props;
@@ -34,11 +25,11 @@ class ChangeConverter extends Component {
   render() {
     return (
       <div className={styles.inputContainer}>
-        <label htmlFor="converterInput">Wprowadź przelicznik walutowy:</label>
+        <label className={styles.inputLabel} htmlFor="converterInput">
+          Wprowadź przelicznik walutowy:
+        </label>
         <input
-          type="number"
           name="converterInput"
-          min="0"
           className={styles.converterInput}
           value={this.state.value}
           onChange={this.handleChange}

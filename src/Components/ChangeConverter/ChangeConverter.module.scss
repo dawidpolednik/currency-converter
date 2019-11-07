@@ -1,11 +1,30 @@
+@import "../../assets/fonts.scss";
+
 .inputContainer {
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 120px;
+  .inputLabel {
+    padding-bottom: 25px;
+    font-family: $firstFont;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
   .converterInput {
-    margin-top: 15px;
-    width: 100px;
-    padding: 10px 25px;
+    width: 20%;
+    padding: 15px 0;
+    background: transparent;
+    color: black;
+    font-family: $firstFont;
+    border: 3px solid rgba(0, 0, 0, 0.7);
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
   }
 }
