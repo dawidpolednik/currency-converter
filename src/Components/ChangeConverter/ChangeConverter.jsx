@@ -17,7 +17,7 @@ class ChangeConverter extends Component {
 
   handleChange = event => {
     this.setState(
-      { ...this.state, value: event.target.value },
+      { ...this.state, value: event.target.value.replace(/,/g, ".") },
       this.handleSubmit
     );
   };

@@ -64,7 +64,7 @@ class NewTransactionDialog extends Component {
     this.setState({
       transaction: {
         ...this.state.transaction,
-        amount: e.target.value
+        amount: e.target.value.replace(/,/g, ".")
       }
     });
 
