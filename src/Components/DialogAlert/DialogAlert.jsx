@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  withStyles,
   Button,
   Dialog,
   DialogContent,
@@ -7,10 +8,16 @@ import {
   DialogContentText,
   DialogTitle
 } from "@material-ui/core";
-// import style from "./DialogAlert.styles.js";
+import style from "./DialogAlert.styles.js";
 
-const DialogAlert = ({ isOpenAlert, handleDialogAlert, title, content }) => {
-  // const { classes } = this.props;s
+const DialogAlert = ({
+  classes,
+  isOpenAlert,
+  handleDialogAlert,
+  title,
+  content
+}) => {
+  // const { classes } = this.props;
   return (
     <Dialog
       open={isOpenAlert}
@@ -18,12 +25,17 @@ const DialogAlert = ({ isOpenAlert, handleDialogAlert, title, content }) => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-      <DialogContent>
-        <DialogContentText id="alert-dialog-description">
-          {content}
-        </DialogContentText>
-      </DialogContent>
+      <DialogTitle className={classes.dialogTitle} id="alert-dialog-title">
+        {title}
+      </DialogTitle>
+
+      <DialogContentText
+        className={classes.dialogContent}
+        id="alert-dialog-description"
+      >
+        {content}
+      </DialogContentText>
+
       <DialogActions>
         <Button onClick={handleDialogAlert} color="primary">
           Wstecz
@@ -32,4 +44,4 @@ const DialogAlert = ({ isOpenAlert, handleDialogAlert, title, content }) => {
     </Dialog>
   );
 };
-export default DialogAlert;
+export default withStyles(style)(DialogAlert);
