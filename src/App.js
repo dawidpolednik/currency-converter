@@ -73,19 +73,18 @@ class App extends Component {
             <TransactionMaxInfo maxTransactionObject={maxTransactionObject} />
 
             <TransactionsList />
+            <NewTransactionDialog
+              open={openDialog}
+              handleDialog={this.handleDialog}
+            />
+            <DialogAlert
+              isOpenAlert={isOpenAlert}
+              handleDialogAlert={this.handleDialogAlert}
+              title={CURRENCY_CONVERTER_TITLE}
+              content={CURRENCY_CONVERTER_ALERT}
+            />
           </div>
         </ScrollAnimation>
-
-        <NewTransactionDialog
-          open={openDialog}
-          handleDialog={this.handleDialog}
-        />
-        <DialogAlert
-          isOpenAlert={isOpenAlert}
-          handleDialogAlert={this.handleDialogAlert}
-          title={CURRENCY_CONVERTER_TITLE}
-          content={CURRENCY_CONVERTER_ALERT}
-        />
       </div>
     );
   }

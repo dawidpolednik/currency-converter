@@ -7,15 +7,15 @@ import {
   ADD_TRANSACTION_ALERT
 } from "../../assets/strings";
 import {
+  withStyles,
   Dialog,
   DialogActions,
   DialogTitle,
+  DialogContent,
   Button,
-  TextField,
-  InputLabel,
-  OutlinedInput,
-  InputAdornment
+  TextField
 } from "@material-ui/core";
+import style from "./NewTransactionDialog.styles.js";
 
 class NewTransactionDialog extends Component {
   state = {
@@ -95,43 +95,49 @@ class NewTransactionDialog extends Component {
     return (
       <>
         <Dialog
+          className={classes.dialog}
           open={open}
           keepMounted
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
-          <DialogTitle id="alert-dialog-slide-title">
-            {"Prosze wprowadź dane wymagane do przeprowadzenia transakcji."}
-          </DialogTitle>
+          <DialogContent className={classes.dialogContent}>
+            <DialogTitle
+              className={classes.dialogTitle}
+              id="alert-dialog-slide-title"
+            >
+              {"Wprowadź dane"}
+            </DialogTitle>
 
-          <TextField
-            id="outlined-basic"
-            // className={classes.textField}
-            label="Nazwa"
-            margin="normal"
-            variant="outlined"
-            value={transaction.name}
-            onChange={this.handleChangeName}
-          />
-          <InputLabel htmlFor="outlined-adornment-amount">Kwota</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-amount"
-            type="number"
-            value={transaction.amount}
-            onChange={this.handleChangeAmount}
-            startAdornment={
-              <InputAdornment position="start">&euro;</InputAdornment>
-            }
-            labelWidth={60}
-          />
+            <TextField
+              id="outlined-basic"
+              className={classes.field}
+              label="Nazwa"
+              margin="normal"
+              variant="outlined"
+              value={transaction.name}
+              onChange={this.handleChangeName}
+            />
 
-          <DialogActions>
-            <Button onClick={this.handleSubmit} color="primary">
-              Dodaj
-            </Button>
-            <Button onClick={this.goBack} color="primary">
-              Wstecz
-            </Button>
+            <TextField
+              id="outlined-basic"
+              className={classes.field}
+              label="&euro;"
+              margin="normal"
+              variant="outlined"
+              value={transaction.amount}
+              onChange={this.handleChangeAmount}
+            />
+          </DialogContent>
+          <DialogActions className={classes.dialogActions}>
+            <div className={classes.buttonsContainer}>
+              <Button onClick={this.goBack} color="primary">
+                Wstecz
+              </Button>
+              <Button onClick={this.handleSubmit} color="primary">
+                Dodaj
+              </Button>
+            </div>
           </DialogActions>
         </Dialog>
         <DialogAlert
@@ -158,4 +164,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewTransactionDialog);
+)(withStyles(style)(NewTransactionDialog));

@@ -1,6 +1,7 @@
 const style = () => ({
   dialogTitle: {
-    textAlign: "center"
+    textAlign: "center",
+    fontFamily: "roboto"
   },
   dialogContent: {
     padding: "0px 40px 0px 40px",
