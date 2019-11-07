@@ -73,7 +73,9 @@ class NewTransactionDialog extends Component {
     const { name, amount } = this.state.transaction;
     const { rate, handleDialog, addTransaction } = this.props;
     const conversionAmount = parseFloat(amount * rate).toFixed(2);
-    name && name.length > 0 && (amount && amount.length > 0)
+    name &&
+    name.length > 0 &&
+    (amount && amount > 0 && amount <= Math.pow(10, 6))
       ? addTransaction({ name, amount, conversionAmount })
       : this.handleDialogAlert();
     this.resetValues();

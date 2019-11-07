@@ -38,7 +38,7 @@ class App extends Component {
 
   handleDialog = () => {
     const { rate } = this.props;
-    rate && rate > 0 && rate <= 1000
+    rate && rate > 0 && rate <= 100
       ? this.setState(prevState => ({
           openDialog: !prevState.openDialog
         }))
