@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getRate, addTransaction } from "../../actions/converterActions";
-
+import DialogAlert from "../DialogAlert/DialogAlert";
+import {
+  ADD_TRANSACTION_QUESTION,
+  ADD_TRANSACTION_ALERT
+} from "../../assets/strings";
 import {
   Dialog,
   DialogActions,
@@ -16,6 +20,7 @@ import {
 class NewTransactionDialog extends Component {
   state = {
     openDialog: false,
+    isOpenAlert: false,
     transaction: {
       name: "",
       amount: ""
@@ -33,6 +38,12 @@ class NewTransactionDialog extends Component {
       });
     }
   };
+
+  handleDialogAlert = () =>
+    this.setState(prevState => ({
+      isOpenAlert: !prevState.isOpenAlert
+    }));
+
   resetValues = () =>
     this.setState({
       transaction: {
@@ -59,13 +70,14 @@ class NewTransactionDialog extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
     const { name, amount } = this.state.transaction;
-    const { rate, handleDialog } = this.props;
+    const { rate, handleDialog, addTransaction } = this.props;
     const conversionAmount = parseInt(amount * rate).toFixed(2);
-    this.props.addTransaction({ name, amount, conversionAmount });
+    (name && name.length > 0) || (name && name.length > 0)
+      ? addTransaction({ name, amount, conversionAmount })
+      : this.handleDialogAlert();
     this.resetValues();
-    return this.props.handleDialog();
+    handleDialog();
   };
 
   goBack = () => {
@@ -76,7 +88,7 @@ class NewTransactionDialog extends Component {
 
   render() {
     const { classes } = this.props;
-    const { openDialog, transaction } = this.state;
+    const { openDialog, isOpenAlert, transaction } = this.state;
     const open = Boolean(openDialog);
     return (
       <>
@@ -120,6 +132,12 @@ class NewTransactionDialog extends Component {
             </Button>
           </DialogActions>
         </Dialog>
+        <DialogAlert
+          isOpenAlert={isOpenAlert}
+          handleDialogAlert={this.handleDialogAlert}
+          title={ADD_TRANSACTION_QUESTION}
+          content={ADD_TRANSACTION_ALERT}
+        />
       </>
     );
   }

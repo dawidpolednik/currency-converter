@@ -10,7 +10,6 @@ const TransactionItem = ({
 }) => {
   return (
     <li key={index} className={styles.itemContainer}>
-      {/* <div className={styles.itemContainer}> */}
       <p className={styles.itemParagraph}>
         {`Nazwa: ${name} | Kwota do przeliczenia: ${parseInt(amount).toFixed(
           2
@@ -19,7 +18,6 @@ const TransactionItem = ({
       <button className={styles.deleteButton} onClick={() => toDelete()}>
         Usuń
       </button>
-      {/* </div> */}
     </li>
   );
 };

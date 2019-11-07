@@ -8,6 +8,10 @@ import TransactionsSumInfo from "./Components/TransactionsSumInfo/TransactionsSu
 import TransactionMaxInfo from "./Components/TransactionMaxInfo/TransactionMaxInfo";
 import NewTransactionDialog from "./Components/NewTransactionDialog/NewTransactionDialog";
 import DialogAlert from "./Components/DialogAlert/DialogAlert";
+import {
+  CURRENCY_CONVERTER_QUESTION,
+  CURRENCY_CONVERTER_ALERT
+} from "./assets/strings";
 import styles from "./App.module.scss";
 import {
   getTransactions,
@@ -65,7 +69,7 @@ class App extends Component {
             <ConverterInfo />
             <div className={styles.buttonContainer}>
               <button className={styles.buttonAdd} onClick={this.handleDialog}>
-                Dodaj transakcje
+                Nowa transakcja
               </button>
             </div>
             <TransactionsSumInfo sumOfTransactions={sumOfTransactions} />
@@ -83,6 +87,8 @@ class App extends Component {
         <DialogAlert
           isOpenAlert={isOpenAlert}
           handleDialogAlert={this.handleDialogAlert}
+          title={CURRENCY_CONVERTER_QUESTION}
+          content={CURRENCY_CONVERTER_ALERT}
         />
       </div>
     );

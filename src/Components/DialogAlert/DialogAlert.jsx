@@ -8,7 +8,7 @@ import {
   DialogTitle
 } from "@material-ui/core";
 
-const DialogAlert = ({ isOpenAlert, handleDialogAlert }) => {
+const DialogAlert = ({ isOpenAlert, handleDialogAlert, title, content }) => {
   return (
     <Dialog
       open={isOpenAlert}
@@ -16,14 +16,10 @@ const DialogAlert = ({ isOpenAlert, handleDialogAlert }) => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">
-        {"Czy wprowadziłeś wartość przelicznika walutowego?"}
-      </DialogTitle>
+      <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          W celu utworzenia transakcji walutowej należy wprowadzić wartość
-          przelicznika. Powróć do strony głównej w celu wprowadzenia wymaganej
-          wartości.
+          {content}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
