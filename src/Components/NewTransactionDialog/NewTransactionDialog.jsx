@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getRate, addTransaction } from "../../actions/converterActions";
 import DialogAlert from "../DialogAlert/DialogAlert";
 import {
-  ADD_TRANSACTION_QUESTION,
+  ADD_TRANSACTION_TITLE,
   ADD_TRANSACTION_ALERT
 } from "../../assets/strings";
 import {
@@ -135,7 +135,7 @@ class NewTransactionDialog extends Component {
         <DialogAlert
           isOpenAlert={isOpenAlert}
           handleDialogAlert={this.handleDialogAlert}
-          title={ADD_TRANSACTION_QUESTION}
+          title={ADD_TRANSACTION_TITLE}
           content={ADD_TRANSACTION_ALERT}
         />
       </>

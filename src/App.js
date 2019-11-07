@@ -9,7 +9,7 @@ import TransactionMaxInfo from "./Components/TransactionMaxInfo/TransactionMaxIn
 import NewTransactionDialog from "./Components/NewTransactionDialog/NewTransactionDialog";
 import DialogAlert from "./Components/DialogAlert/DialogAlert";
 import {
-  CURRENCY_CONVERTER_QUESTION,
+  CURRENCY_CONVERTER_TITLE,
   CURRENCY_CONVERTER_ALERT
 } from "./assets/strings";
 import styles from "./App.module.scss";
@@ -38,7 +38,7 @@ class App extends Component {
 
   handleDialog = () => {
     const { rate } = this.props;
-    rate && rate > 0
+    rate && rate > 0 && rate <= 1000
       ? this.setState(prevState => ({
           openDialog: !prevState.openDialog
         }))
@@ -47,11 +47,7 @@ class App extends Component {
 
   render() {
     const { openDialog, isOpenAlert } = this.state;
-    const {
-      transactions,
-      sumOfTransactions,
-      maxTransactionObject
-    } = this.props;
+    const { sumOfTransactions, maxTransactionObject } = this.props;
     console.log("maxTransactionObject :", maxTransactionObject);
     return (
       <div className={styles.container}>
@@ -87,7 +83,7 @@ class App extends Component {
         <DialogAlert
           isOpenAlert={isOpenAlert}
           handleDialogAlert={this.handleDialogAlert}
-          title={CURRENCY_CONVERTER_QUESTION}
+          title={CURRENCY_CONVERTER_TITLE}
           content={CURRENCY_CONVERTER_ALERT}
         />
       </div>
