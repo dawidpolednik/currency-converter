@@ -4,7 +4,7 @@ import styles from "./TransactionsSumInfo.module.scss";
 const TransactionsSumInfo = ({ sumOfTransactions }) => {
   return (
     <div className={styles.sumInfoContainer}>
-      <p>
+      <p className={styles.sumInfoParagraph}>
         Suma wszystkich transakcji wynosi:
         <span>
           {!sumOfTransactions || isNaN(sumOfTransactions)

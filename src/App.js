@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ScrollAnimation from "react-animate-on-scroll";
 import ChangeConverter from "./Components/ChangeConverter/ChangeConverter";
 import ConverterInfo from "./Components/ConverterInfo/ConverterInfo";
 import TransactionsList from "./Components/TransactionsList/TransactionList";
@@ -50,20 +51,29 @@ class App extends Component {
     console.log("maxTransactionObject :", maxTransactionObject);
     return (
       <div className={styles.container}>
-        <div className={styles.banner}>
-          <ChangeConverter />
-          <ConverterInfo />
-          <div className={styles.buttonContainer}>
-            <button className={styles.buttonAdd} onClick={this.handleDialog}>
-              Dodaj transakcje
-            </button>
+        <ScrollAnimation
+          animateIn="rotateIn"
+          initiallyVisible={false}
+          duration={1.5}
+          delay={100}
+          animateOnce
+          animatePreScroll
+        >
+          <div className={styles.banner}>
+            <ChangeConverter />
+            <ConverterInfo />
+            <div className={styles.buttonContainer}>
+              <button className={styles.buttonAdd} onClick={this.handleDialog}>
+                Dodaj transakcje
+              </button>
+            </div>
+            <TransactionsSumInfo sumOfTransactions={sumOfTransactions} />
+
+            <TransactionMaxInfo maxTransactionObject={maxTransactionObject} />
           </div>
-        </div>
+        </ScrollAnimation>
 
         <TransactionsList />
-        <TransactionsSumInfo sumOfTransactions={sumOfTransactions} />
-
-        <TransactionMaxInfo maxTransactionObject={maxTransactionObject} />
 
         <NewTransactionDialog
           open={openDialog}

@@ -1,5 +1,9 @@
 @import "../../assets/fonts.scss";
 
 .sumInfoContainer {
-  padding-top: 300px;
+  padding-bottom: 10px;
+  .sumInfoParagraph {
+    font-family: $secondFont;
+    font-size: 1.1rem;
+  }
 }

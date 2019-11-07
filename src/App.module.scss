@@ -13,7 +13,7 @@
   justify-content: flex-start;
   .banner {
     margin-top: 60px;
-    width: 45%;
+    width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +23,7 @@
     opacity: 0.8;
     border-radius: 10px;
     .buttonContainer {
-      padding: 20px 0 30px;
+      padding: 20px 0 15px;
       .buttonAdd {
         font-family: $secondFont;
         width: 180px;

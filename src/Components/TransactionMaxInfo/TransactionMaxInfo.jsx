@@ -1,16 +1,12 @@
 import React from "react";
+import styles from "./TransactionMaxInfo.module.scss";
 
 const TransactionMaxInfo = ({ maxTransactionObject }) => {
   return (
-    // <div key={name}>
-    //   <h3>Informacje dotyczące najwyższej transakcji</h3>
-    //   <p>Nazwa: {maxTransactionObject.name}</p>
-    //   <p>Kwota w PLN {maxTransactionObject.amount}</p>
-    //   <p>Kwota w EUR {maxTransactionObject.conversionAmount}</p>
-    // </div>
-
-    <div>
-      <h3>Dane związane z najwyższą transakcją</h3>
+    <div className={styles.maxInfoContainer}>
+      <h3 className={styles.maxInfoTitle}>
+        Informacje dotyczące najwyższej transakcji:
+      </h3>
       <p>
         {!maxTransactionObject
           ? ` Nie wprowadziłeś jeszcze żadnych transakcji. `

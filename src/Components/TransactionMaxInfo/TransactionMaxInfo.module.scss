@@ -1,0 +1,15 @@
+@import "../../assets/fonts.scss";
+
+.maxInfoContainer {
+  text-align: center;
+  padding-bottom: 15px;
+  .maxInfoTitle {
+    padding-bottom: 10px;
+    font-family: $secondFont;
+    font-size: 1.1rem;
+  }
+  .sumInfoParagraph {
+    font-family: $secondFont;
+    font-size: 1.1rem;
+  }
+}
