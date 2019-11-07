@@ -1,5 +1,5 @@
 import React from "react";
-
+import styles from "./TransactionList.module.scss";
 const TransactionItem = ({
   name,
   amount,
@@ -9,14 +9,16 @@ const TransactionItem = ({
   key
 }) => {
   return (
-    <>
-      <p>
+    <div className={styles.itemContainer}>
+      <p className={styles.itemParagraph}>
         {`Nazwa: ${name} Kwota(EUR) : ${parseInt(amount).toFixed(
           2
         )} Wartość transakcji(PLN): ${conversionAmount}`}
       </p>
-      <button onClick={() => toDelete()}>Usuń transakcje</button>
-    </>
+      <button className={styles.deleteButton} onClick={() => toDelete()}>
+        Usuń
+      </button>
+    </div>
   );
 };
 

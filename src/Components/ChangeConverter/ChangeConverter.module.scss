@@ -1,12 +1,12 @@
 @import "../../assets/fonts.scss";
 
 .inputContainer {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 80px;
   .inputLabel {
     padding-bottom: 25px;
     font-family: $firstFont;
@@ -17,7 +17,7 @@
     text-transform: uppercase;
   }
   .converterInput {
-    width: 20%;
+    width: 15%;
     padding: 15px 0;
     background: transparent;
     color: #eee;

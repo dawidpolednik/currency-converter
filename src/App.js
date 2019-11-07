@@ -52,12 +52,13 @@ class App extends Component {
     return (
       <div className={styles.container}>
         <ScrollAnimation
-          animateIn="rotateIn"
+          animateIn="fadeInUp"
           initiallyVisible={false}
-          duration={1.5}
+          duration={2}
           delay={100}
           animateOnce
           animatePreScroll
+          style={{ minHeight: "100vh" }}
         >
           <div className={styles.banner}>
             <ChangeConverter />
@@ -70,10 +71,10 @@ class App extends Component {
             <TransactionsSumInfo sumOfTransactions={sumOfTransactions} />
 
             <TransactionMaxInfo maxTransactionObject={maxTransactionObject} />
+
+            <TransactionsList />
           </div>
         </ScrollAnimation>
-
-        <TransactionsList />
 
         <NewTransactionDialog
           open={openDialog}

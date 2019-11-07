@@ -7,10 +7,10 @@ const TransactionMaxInfo = ({ maxTransactionObject }) => {
       <h3 className={styles.maxInfoTitle}>
         Informacje dotyczące najwyższej transakcji:
       </h3>
-      <p>
+      <p className={styles.maxInfoParagraph}>
         {!maxTransactionObject
           ? ` Nie wprowadziłeś jeszcze żadnych transakcji. `
-          : `Nazwa transkacji: ${
+          : `Nazwa transakcji: ${
               maxTransactionObject.name
             } Kwota do transakcji: ${parseInt(
               maxTransactionObject.amount

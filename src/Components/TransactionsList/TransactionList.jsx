@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import styles from "./Transaction.module.scss";
+import styles from "./TransactionList.module.scss";
 import TransactionsItem from "./TransactionItem";
 import {
   getRate,
@@ -20,19 +20,24 @@ class TransactionsList extends Component {
   render() {
     const { transactions, deleteTransaction } = this.props;
     return (
-      <ul>
-        {transactions.map((transaction, index) => (
-          <li key={index}>
-            <TransactionsItem
-              name={transaction.name}
-              amount={transaction.amount}
-              conversionAmount={transaction.conversionAmount}
-              index={index}
-              toDelete={() => deleteTransaction(transaction)}
-            />
-          </li>
-        ))}
-      </ul>
+      <div className={styles.listContainer}>
+        {transactions && transactions.length !== 0 && (
+          <p className={styles.listTitle}>Lista transakcji</p>
+        )}
+        <ul className={styles.listTransactions}>
+          {transactions.map((transaction, index) => (
+            <li key={index}>
+              <TransactionsItem
+                name={transaction.name}
+                amount={transaction.amount}
+                conversionAmount={transaction.conversionAmount}
+                index={index}
+                toDelete={() => deleteTransaction(transaction)}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   }
 }
