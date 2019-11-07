@@ -26,15 +26,14 @@ class TransactionsList extends Component {
         )}
         <ul className={styles.listTransactions}>
           {transactions.map((transaction, index) => (
-            <li key={index}>
-              <TransactionsItem
-                name={transaction.name}
-                amount={transaction.amount}
-                conversionAmount={transaction.conversionAmount}
-                index={index}
-                toDelete={() => deleteTransaction(transaction)}
-              />
-            </li>
+            <TransactionsItem
+              name={transaction.name}
+              amount={transaction.amount}
+              conversionAmount={transaction.conversionAmount}
+              index={index}
+              toDelete={() => deleteTransaction(transaction)}
+              key={index}
+            />
           ))}
         </ul>
       </div>

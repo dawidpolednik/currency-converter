@@ -9,16 +9,18 @@ const TransactionItem = ({
   key
 }) => {
   return (
-    <div className={styles.itemContainer}>
+    <li key={index} className={styles.itemContainer}>
+      {/* <div className={styles.itemContainer}> */}
       <p className={styles.itemParagraph}>
-        {`Nazwa: ${name} Kwota(EUR) : ${parseInt(amount).toFixed(
+        {`Nazwa: ${name} | Kwota do przeliczenia: ${parseInt(amount).toFixed(
           2
-        )} Wartość transakcji(PLN): ${conversionAmount}`}
+        )} EUR | Wartość transakcji: ${conversionAmount} PLN`}
       </p>
       <button className={styles.deleteButton} onClick={() => toDelete()}>
         Usuń
       </button>
-    </div>
+      {/* </div> */}
+    </li>
   );
 };
 
