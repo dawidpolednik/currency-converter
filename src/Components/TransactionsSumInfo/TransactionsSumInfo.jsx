@@ -1,9 +1,9 @@
 import React from "react";
+import styles from "./TransactionsSumInfo.module.scss";
 
 const TransactionsSumInfo = ({ sumOfTransactions }) => {
-  //   console.log("sumOfTransactions :", sumOfTransactions);
   return (
-    <div>
+    <div className={styles.sumInfoContainer}>
       <p>
         Suma wszystkich transakcji wynosi:
         <span>

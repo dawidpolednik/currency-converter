@@ -50,9 +50,15 @@ class App extends Component {
     console.log("maxTransactionObject :", maxTransactionObject);
     return (
       <div className={styles.container}>
-        <ChangeConverter />
-        <ConverterInfo />
-        <button onClick={this.handleDialog}>Dodaj transakcje</button>
+        <div className={styles.banner}>
+          <ChangeConverter />
+          <ConverterInfo />
+          <div className={styles.buttonContainer}>
+            <button className={styles.buttonAdd} onClick={this.handleDialog}>
+              Dodaj transakcje
+            </button>
+          </div>
+        </div>
 
         <TransactionsList />
         <TransactionsSumInfo sumOfTransactions={sumOfTransactions} />
