@@ -1,4 +1,4 @@
-const style = () => ({
+const style = theme => ({
   dialog: {
     width: "100%",
     textAlign: "center"
@@ -10,7 +10,13 @@ const style = () => ({
     textTransform: "uppercase"
   },
   dialogContent: {
-    // width: "500px",
+    [theme.breakpoints.up("md")]: {
+      width: "600px"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%"
+    },
+
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -20,16 +26,31 @@ const style = () => ({
     width: "70%"
   },
   dialogActions: {
-    // width: "500px",
+    [theme.breakpoints.up("md")]: {
+      width: "600px"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%"
+    },
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
   },
   buttonsContainer: {
+    [theme.breakpoints.down("sm")]: {
+      width: "70%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "90%"
+    },
     width: "40%",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between"
+  },
+  button: {
+    color: "white",
+    backgroundColor: "#3F51B5"
   }
 });
 export default style;

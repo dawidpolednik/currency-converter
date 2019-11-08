@@ -15,6 +15,7 @@ import {
   Button,
   TextField
 } from "@material-ui/core";
+
 import style from "./NewTransactionDialog.styles.js";
 
 class NewTransactionDialog extends Component {
@@ -108,7 +109,7 @@ class NewTransactionDialog extends Component {
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
           maxWidth={false}
-          PaperProps={{ style: { width: "100%" } }}
+          // PaperProps={{ style: { width: "100%" } }}
         >
           <DialogContent className={classes.dialogContent}>
             <DialogTitle
@@ -140,24 +141,23 @@ class NewTransactionDialog extends Component {
           </DialogContent>
           <DialogActions className={classes.dialogActions}>
             <div className={classes.buttonsContainer}>
-              <Button onClick={this.goBack} color="primary">
+              <Button
+                variant="contained"
+                onClick={this.goBack}
+                size="large"
+                className={classes.button}
+              >
                 Wstecz
               </Button>
-              <Button onClick={this.handleSubmit} color="primary">
-                Dodaj
-              </Button>
-              {/* <Button
-                disabled={!this.isSaveEnabled}
+
+              <Button
                 variant="contained"
                 size="large"
-                className={classes.save}
+                className={classes.button}
                 onClick={this.handleSubmit}
               >
-                <SaveIcon
-                  className={classNames(classes.leftIcon, classes.iconSmall)}
-                />
-                Save
-              </Button> */}
+                Dodaj
+              </Button>
             </div>
           </DialogActions>
         </Dialog>

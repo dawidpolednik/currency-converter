@@ -37,7 +37,6 @@ class App extends Component {
 
   handleDialog = () => {
     const { rate } = this.props;
-    console.log("rate :", rate);
     !isNaN(rate)
       ? this.setState(prevState => ({
           openDialog: !prevState.openDialog
@@ -48,7 +47,7 @@ class App extends Component {
   render() {
     const { openDialog, isOpenAlert } = this.state;
     const { sumOfTransactions, maxTransactionObject } = this.props;
-    console.log("maxTransactionObject :", maxTransactionObject);
+
     return (
       <div className={styles.container}>
         <ScrollAnimation
