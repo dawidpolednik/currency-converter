@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./TransactionList.module.scss";
 
-const NAME_TITLE = "Nazwa:";
-const AMOUNT_TITLE = "Kwota do przeliczenia:";
-const CONVERSION_AMOUNT_TITLE = "Wartość transakcji:";
+export const NAME_TITLE = "Nazwa:";
+export const AMOUNT_TITLE = "Kwota do przeliczenia:";
+export const CONVERSION_AMOUNT_TITLE = "Wartość transakcji:";
 
-const renderData = (title, value) => (
+export const renderData = (title, value) => (
   <div className={styles.dataContainer}>
     <p className={styles.itemParagraph}>{title}</p>
     <p className={styles.itemParagraph}>{value}</p>
