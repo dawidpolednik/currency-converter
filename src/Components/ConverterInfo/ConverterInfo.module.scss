@@ -8,3 +8,11 @@
     font-size: 1.5rem;
   }
 }
+
+@media screen and (max-width: 414px) and (max-aspect-ratio: 13/9) {
+  .infoContainer {
+    & p {
+      font-size: 1.2rem;
+    }
+  }
+}

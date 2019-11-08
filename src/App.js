@@ -7,17 +7,17 @@ import TransactionsList from "./Components/TransactionsList/TransactionList";
 import TransactionsSumInfo from "./Components/TransactionsSumInfo/TransactionsSumInfo";
 import TransactionMaxInfo from "./Components/TransactionMaxInfo/TransactionMaxInfo";
 import NewTransactionDialog from "./Components/NewTransactionDialog/NewTransactionDialog";
-import DialogAlert from "./Components/DialogAlert/DialogAlert";
-import {
-  CURRENCY_CONVERTER_TITLE,
-  CURRENCY_CONVERTER_ALERT
-} from "./assets/strings";
 import styles from "./App.module.scss";
 import {
   getTransactions,
   sumTransactions,
   getMaxTransaction
 } from "./actions/converterActions";
+import DialogAlert from "./Components/DialogAlert/DialogAlert";
+import {
+  CURRENCY_CONVERTER_TITLE,
+  CURRENCY_CONVERTER_ALERT
+} from "./assets/strings";
 
 class App extends Component {
   state = {
@@ -30,7 +30,6 @@ class App extends Component {
     this.props.sumTransactions();
     this.props.getMaxTransaction();
   };
-
   handleDialogAlert = () =>
     this.setState(prevState => ({
       isOpenAlert: !prevState.isOpenAlert
@@ -38,7 +37,7 @@ class App extends Component {
 
   handleDialog = () => {
     const { rate } = this.props;
-    rate && rate > 0 && rate <= 100
+    !isNaN(rate)
       ? this.setState(prevState => ({
           openDialog: !prevState.openDialog
         }))
@@ -48,11 +47,11 @@ class App extends Component {
   render() {
     const { openDialog, isOpenAlert } = this.state;
     const { sumOfTransactions, maxTransactionObject } = this.props;
-    console.log("maxTransactionObject :", maxTransactionObject);
+
     return (
       <div className={styles.container}>
         <ScrollAnimation
-          animateIn="fadeInUp"
+          animateIn="fadeInDown"
           initiallyVisible={false}
           duration={2}
           delay={100}

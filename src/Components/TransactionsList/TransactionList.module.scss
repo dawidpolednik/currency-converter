@@ -24,7 +24,7 @@
     list-style-type: none;
     padding-bottom: 20px;
     .itemContainer {
-      width: 85%;
+      width: 90%;
       display: flex;
       flex-direction: row;
       background-color: rgba(0, 0, 0, 0.7);
@@ -32,21 +32,27 @@
       align-items: center;
       flex-wrap: nowrap;
       overflow: hidden;
+      margin: 10px 0;
       .itemParagraph {
-        padding: 0 20px;
+        padding: 5px 0;
         font-family: $firstFont;
-        font-size: 1.1rem;
-        line-height: 50px;
+      }
+      .dataContainer {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
       .deleteButton {
         width: 120px;
-        height: 50px;
+        height: 60px;
         background-color: #e73827;
         opacity: 0.9;
         color: #eee;
         font-family: $secondFont;
         font-weight: bold;
-        line-height: 50px;
+        line-height: 60px;
         font-size: 1rem;
         text-transform: uppercase;
         transition: 0.6s;
@@ -55,6 +61,88 @@
           background-color: #eee;
           color: black;
           font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) and (max-aspect-ratio: 13/9) {
+  .listContainer {
+    width: 100%;
+    padding: 10px 0;
+    .listTitle {
+      font-size: 0.9rem;
+      padding: 0;
+    }
+    .listTransactions {
+      .itemContainer {
+        margin-bottom: 10px;
+        display: flex;
+        width: 100%;
+        .itemParagraph {
+          font-size: 0.5rem;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
+        }
+        .dataContainer {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .deleteButton {
+          width: 60px;
+          height: 50px;
+          line-height: 50px;
+          font-size: 0.5rem;
+
+          &:hover {
+            font-size: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 414px) and (min-width: 321px) and (max-aspect-ratio: 13/9) {
+  .listContainer {
+    width: 100%;
+    padding: 10px 0;
+    .listTitle {
+      font-size: 0.9rem;
+      padding: 0;
+    }
+    .listTransactions {
+      .itemContainer {
+        margin-bottom: 10px;
+        display: flex;
+        width: 100%;
+        .itemParagraph {
+          font-size: 0.5rem;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
+        }
+        .dataContainer {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .deleteButton {
+          width: 60px;
+          height: 50px;
+          line-height: 50px;
+          font-size: 0.5rem;
+
+          &:hover {
+            font-size: 0.6rem;
+          }
         }
       }
     }
