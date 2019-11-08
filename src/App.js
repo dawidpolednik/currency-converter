@@ -52,7 +52,7 @@ class App extends Component {
     return (
       <div className={styles.container}>
         <ScrollAnimation
-          animateIn="fadeInUp"
+          animateIn="fadeInDown"
           initiallyVisible={false}
           duration={2}
           delay={100}
