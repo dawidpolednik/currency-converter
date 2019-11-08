@@ -30,3 +30,29 @@
     outline: none;
   }
 }
+
+@media screen and (max-width: 320px) and (max-aspect-ratio: 13/9) {
+  .inputContainer {
+    padding-top: 20px;
+    .inputLabel {
+      text-align: center;
+      font-size: 1rem;
+    }
+    .converterInput {
+      width: 60%;
+    }
+  }
+}
+
+@media screen and (max-width: 414px) and (min-width: 321px) and (max-aspect-ratio: 13/9) {
+  .inputContainer {
+    padding-top: 40px;
+    .inputLabel {
+      text-align: center;
+      font-size: 1.3rem;
+    }
+    .converterInput {
+      width: 60%;
+    }
+  }
+}

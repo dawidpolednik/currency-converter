@@ -1,6 +1,5 @@
 @import "./assets/fonts.scss";
 .container {
-  min-width: 1180px;
   width: 100%;
   min-height: 100vh;
   background-image: url("./img//background.jpg");
@@ -44,6 +43,44 @@
           font-size: 1.15rem;
           color: #eee;
         }
+      }
+    }
+  }
+}
+@media screen and (max-width: 320px) and (max-aspect-ratio: 13/9) {
+  .container {
+    .banner {
+      width: 100%;
+      .buttonContainer {
+        padding: 20px 0;
+        .buttonAdd {
+          font-family: $secondFont;
+          width: 140px;
+          height: 50px;
+          line-height: 50px;
+          font-size: 0.8rem;
+
+          &:hover,
+          &:active {
+            cursor: pointer;
+            background-color: black;
+            opacity: 0.3;
+            font-size: 0.9rem;
+            color: #eee;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 414px) and (max-aspect-ratio: 13/9) {
+  .container {
+    max-width: 414px;
+    .banner {
+      width: 100%;
+      .buttonContainer {
+        padding: 20px 0;
       }
     }
   }

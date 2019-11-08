@@ -66,3 +66,85 @@
     }
   }
 }
+
+@media screen and (max-width: 320px) and (max-aspect-ratio: 13/9) {
+  .listContainer {
+    width: 100%;
+    padding: 10px 0;
+    .listTitle {
+      font-size: 0.9rem;
+      padding: 0;
+    }
+    .listTransactions {
+      .itemContainer {
+        margin-bottom: 10px;
+        display: flex;
+        width: 100%;
+        .itemParagraph {
+          font-size: 0.5rem;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
+        }
+        .dataContainer {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .deleteButton {
+          width: 60px;
+          height: 50px;
+          line-height: 50px;
+          font-size: 0.5rem;
+
+          &:hover {
+            font-size: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 414px) and (min-width: 321px) and (max-aspect-ratio: 13/9) {
+  .listContainer {
+    width: 100%;
+    padding: 10px 0;
+    .listTitle {
+      font-size: 0.9rem;
+      padding: 0;
+    }
+    .listTransactions {
+      .itemContainer {
+        margin-bottom: 10px;
+        display: flex;
+        width: 100%;
+        .itemParagraph {
+          font-size: 0.5rem;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
+        }
+        .dataContainer {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .deleteButton {
+          width: 60px;
+          height: 50px;
+          line-height: 50px;
+          font-size: 0.5rem;
+
+          &:hover {
+            font-size: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}

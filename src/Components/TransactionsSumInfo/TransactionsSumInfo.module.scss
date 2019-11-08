@@ -7,3 +7,19 @@
     font-size: 1.1rem;
   }
 }
+@media screen and (max-width: 320px) and (max-aspect-ratio: 13/9) {
+  .sumInfoContainer {
+    .sumInfoParagraph {
+      font-family: $firstFont;
+      font-size: 0.6rem;
+    }
+  }
+}
+@media screen and (max-width: 414px) and (min-width: 321px) and (max-aspect-ratio: 13/9) {
+  .sumInfoContainer {
+    .sumInfoParagraph {
+      font-family: $firstFont;
+      font-size: 0.8rem;
+    }
+  }
+}

@@ -2,11 +2,22 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styles from "./ChangeConverter.module.scss";
 import { setRate, refreshTransactions } from "../../actions/converterActions";
+import DialogAlert from "../DialogAlert/DialogAlert";
+import {
+  CURRENCY_CONVERTER_TITLE,
+  CURRENCY_CONVERTER_ALERT
+} from "../../assets/strings";
 
 class ChangeConverter extends Component {
   state = {
-    value: ""
+    value: "",
+    isOpenAlert: false
   };
+
+  handleDialogAlert = () =>
+    this.setState(prevState => ({
+      isOpenAlert: !prevState.isOpenAlert
+    }));
 
   handleSubmit = () => {
     const { value } = this.state;
@@ -15,14 +26,26 @@ class ChangeConverter extends Component {
     value && value !== 0 && refreshTransactions(value);
   };
 
+  handleDialog = async () => {
+    await this.handleDialogAlert();
+    this.setState({
+      ...this.state,
+      value: ""
+    });
+  };
+
   handleChange = event => {
     this.setState(
       { ...this.state, value: event.target.value.replace(/,/g, ".") },
-      this.handleSubmit
+      parseFloat(event.target.value) > 100 ||
+        isNaN(event.target.value.replace(/,/g, "."))
+        ? this.handleDialog
+        : this.handleSubmit
     );
   };
 
   render() {
+    const { isOpenAlert } = this.state;
     return (
       <div className={styles.inputContainer}>
         <label className={styles.inputLabel} htmlFor="converterInput">
@@ -33,6 +56,12 @@ class ChangeConverter extends Component {
           className={styles.converterInput}
           value={this.state.value}
           onChange={this.handleChange}
+        />
+        <DialogAlert
+          isOpenAlert={isOpenAlert}
+          handleDialogAlert={this.handleDialogAlert}
+          title={CURRENCY_CONVERTER_TITLE}
+          content={CURRENCY_CONVERTER_ALERT}
         />
       </div>
     );
