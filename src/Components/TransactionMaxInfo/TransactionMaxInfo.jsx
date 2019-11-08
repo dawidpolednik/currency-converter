@@ -2,6 +2,14 @@ import React from "react";
 import styles from "./TransactionMaxInfo.module.scss";
 
 const TransactionMaxInfo = ({ maxTransactionObject }) => {
+  const transactionName = `Nazwa transakcji: ${maxTransactionObject.name}`;
+
+  const transactionValue = `Kwota do transakcji: ${parseFloat(
+    maxTransactionObject.amount
+  ).toFixed(2)} EUR`;
+
+  const transactionResult = `Wartość transakcji: ${maxTransactionObject.conversionAmount} PLN `;
+
   return (
     <div className={styles.maxInfoContainer}>
       <h3 className={styles.maxInfoTitle}>
@@ -10,13 +18,7 @@ const TransactionMaxInfo = ({ maxTransactionObject }) => {
       <p className={styles.maxInfoParagraph}>
         {!maxTransactionObject
           ? ` Nie wprowadziłeś jeszcze żadnych transakcji. `
-          : `Nazwa transakcji: ${
-              maxTransactionObject.name
-            } | Kwota do transakcji: ${parseFloat(
-              maxTransactionObject.amount
-            ).toFixed(2)} EUR | Wartość transakcji: ${
-              maxTransactionObject.conversionAmount
-            } PLN `}
+          : `${transactionName} | ${transactionValue} | ${transactionResult}`}
       </p>
     </div>
   );

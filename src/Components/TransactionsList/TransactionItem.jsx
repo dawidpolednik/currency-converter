@@ -5,8 +5,7 @@ const TransactionItem = ({
   amount,
   conversionAmount,
   index,
-  toDelete,
-  key
+  toDelete
 }) => {
   return (
     <li key={index} className={styles.itemContainer}>

@@ -16,6 +16,29 @@ const DialogAlert = ({
   title,
   content
 }) => {
+  const dialogTitle = (
+    <DialogTitle className={classes.dialogTitle} id="alert-dialog-title">
+      {title}
+    </DialogTitle>
+  );
+
+  const dialogContent = (
+    <DialogContentText
+      className={classes.dialogContent}
+      id="alert-dialog-description"
+    >
+      {content}
+    </DialogContentText>
+  );
+
+  const dialogActions = (
+    <DialogActions>
+      <Button onClick={handleDialogAlert} color="primary">
+        Wstecz
+      </Button>
+    </DialogActions>
+  );
+
   return (
     <Dialog
       open={isOpenAlert}
@@ -23,22 +46,9 @@ const DialogAlert = ({
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle className={classes.dialogTitle} id="alert-dialog-title">
-        {title}
-      </DialogTitle>
-
-      <DialogContentText
-        className={classes.dialogContent}
-        id="alert-dialog-description"
-      >
-        {content}
-      </DialogContentText>
-
-      <DialogActions>
-        <Button onClick={handleDialogAlert} color="primary">
-          Wstecz
-        </Button>
-      </DialogActions>
+      {dialogTitle}
+      {dialogContent}
+      {dialogActions}
     </Dialog>
   );
 };

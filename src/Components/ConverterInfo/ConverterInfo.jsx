@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import styles from "./ConverterInfo.module.scss";
 import { getRate } from "../../actions/converterActions";
 
+const EURO_CHAR = `1.00 EUR`;
+
 class ConverterInfo extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.rate) {
@@ -12,11 +14,10 @@ class ConverterInfo extends Component {
 
   render() {
     const { rate } = this.props;
-    const euroChar = `1.00 EUR`;
     return (
       <div className={styles.infoContainer}>
         <p>
-          {euroChar} = <span>{!rate || isNaN(rate) ? `x` : rate}</span> PLN
+          {EURO_CHAR} = <span>{!rate || isNaN(rate) ? `x` : rate}</span> PLN
         </p>
       </div>
     );

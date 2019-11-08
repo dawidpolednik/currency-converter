@@ -10,7 +10,7 @@ const style = () => ({
     textTransform: "uppercase"
   },
   dialogContent: {
-    width: "500px",
+    // width: "500px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -20,7 +20,7 @@ const style = () => ({
     width: "70%"
   },
   dialogActions: {
-    width: "500px",
+    // width: "500px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center"

@@ -68,14 +68,21 @@ class NewTransactionDialog extends Component {
       }
     });
 
+  get isFormValid() {
+    const { name, amount } = this.state.transaction;
+    return (
+      name &&
+      name.length > 0 &&
+      (amount && amount > 0 && amount <= Math.pow(10, 6))
+    );
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     const { name, amount } = this.state.transaction;
     const { rate, handleDialog, addTransaction } = this.props;
     const conversionAmount = parseFloat(amount * rate).toFixed(2);
-    name &&
-    name.length > 0 &&
-    (amount && amount > 0 && amount <= Math.pow(10, 6))
+    this.isFormValid
       ? addTransaction({ name, amount, conversionAmount })
       : this.handleDialogAlert();
     this.resetValues();
@@ -100,6 +107,8 @@ class NewTransactionDialog extends Component {
           keepMounted
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
+          maxWidth={false}
+          PaperProps={{ style: { width: "100%" } }}
         >
           <DialogContent className={classes.dialogContent}>
             <DialogTitle
@@ -137,6 +146,18 @@ class NewTransactionDialog extends Component {
               <Button onClick={this.handleSubmit} color="primary">
                 Dodaj
               </Button>
+              {/* <Button
+                disabled={!this.isSaveEnabled}
+                variant="contained"
+                size="large"
+                className={classes.save}
+                onClick={this.handleSubmit}
+              >
+                <SaveIcon
+                  className={classNames(classes.leftIcon, classes.iconSmall)}
+                />
+                Save
+              </Button> */}
             </div>
           </DialogActions>
         </Dialog>

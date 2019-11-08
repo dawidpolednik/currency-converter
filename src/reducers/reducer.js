@@ -9,6 +9,28 @@ import {
   GET_MAX_TRANSACTION
 } from "../actions/converterActions";
 
+const getSumPropertyObjects = transactionList =>
+  transactionList.reduce((prev, current) =>
+    (
+      parseFloat(prev.conversionAmount) + parseFloat(current.conversionAmount)
+    ).toFixed(2)
+  );
+
+const getPropertyOneObject = transactionList =>
+  transactionList &&
+  transactionList.length === 1 &&
+  transactionList[0].conversionAmount;
+
+const getObjectWithMaxProperty = transactionList =>
+  transactionList.reduce((prev, current) =>
+    parseFloat(prev.conversionAmount) > parseFloat(current.conversionAmount)
+      ? prev
+      : current
+  );
+
+const getOneObject = transactionList =>
+  transactionList && transactionList.length === 1 && transactionList[0];
+
 const reducer = (
   state = {
     transactions: [],
@@ -62,33 +84,18 @@ const reducer = (
         )
       };
     case SUM_TRANSACTIONS:
-      console.log("state.transactions :", state.transactions);
       return {
         ...state,
         sumOfTransactions:
           state.transactions && state.transactions.length > 1
-            ? state.transactions.reduce((prevTransaction, currentTransaction) =>
-                (
-                  parseFloat(prevTransaction.conversionAmount) +
-                  parseFloat(currentTransaction.conversionAmount)
-                ).toFixed(2)
-              )
-            : state.transactions &&
-              state.transactions.length === 1 &&
-              state.transactions[0].conversionAmount
+            ? getSumPropertyObjects(state.transactions)
+            : getPropertyOneObject(state.transactions)
       };
     case GET_MAX_TRANSACTION:
       const findObjectMaxValue = () => {
         return state.transactions && state.transactions.length > 1
-          ? state.transactions.reduce((prevTransaction, currentTransaction) =>
-              parseFloat(prevTransaction.conversionAmount) >
-              parseFloat(currentTransaction.conversionAmount)
-                ? prevTransaction
-                : currentTransaction
-            )
-          : state.transactions &&
-              state.transactions.length === 1 &&
-              state.transactions[0];
+          ? getObjectWithMaxProperty(state.transactions)
+          : getOneObject(state.transactions);
       };
 
       return {
