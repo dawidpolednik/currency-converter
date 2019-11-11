@@ -10,11 +10,11 @@ import {
 } from "../actions/converterActions";
 
 const getSumPropertyObjects = transactionList =>
-  transactionList.reduce((prev, current) =>
-    (
-      parseFloat(prev.conversionAmount) + parseFloat(current.conversionAmount)
-    ).toFixed(2)
-  );
+  transactionList
+    .map(transaction => transaction.conversionAmount)
+    .reduce((prev, current) =>
+      (parseFloat(prev) + parseFloat(current)).toFixed(2)
+    );
 
 const getPropertyOneObject = transactionList =>
   transactionList &&
